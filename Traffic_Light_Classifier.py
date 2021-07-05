@@ -56,7 +56,7 @@ tests = test_functions.Tests()
 # Test for one_hot_encode function
 tests.test_one_hot(one_hot_encode)
 
-# Construct a STANDARDIZED_LIST of input images and output labels.
+## Construct a STANDARDIZED_LIST of input images and output labels.
 
 def standardize(image_list):
     
@@ -82,8 +82,8 @@ def standardize(image_list):
 # Standardize all training images
 STANDARDIZED_LIST = standardize(IMAGE_LIST)
 
-# Convert and image to HSV colorspace
-# Visualize the individual color channels
+## Convert and image to HSV colorspace
+## Visualize the individual color channels
 
 image_num = 0
 test_im = STANDARDIZED_LIST[image_num][0]
@@ -111,7 +111,7 @@ ax3.imshow(s, cmap='gray')
 ax4.set_title('V channel')
 ax4.imshow(v, cmap='gray')
 
-# Calculates average red, green ,blue pixels in an image
+## Calculates average red, green ,blue pixels in an image
 def avg_rgb(rgb_image):
     red_sum = np.sum(rgb_image[:,:,0])
     green_sum = np.sum(rgb_image[:,:,1])
@@ -119,4 +119,42 @@ def avg_rgb(rgb_image):
     total = rgb_image.shape[0] * rgb_image.shape[1]
     
     return [red_sum/total,green_sum/total,blue_sum/total]
+
+## This creates a brightness feature that takes in an RGB image and outputs a feature vector and/or value
+## This feature uses HSV colorspace values
+def create_feature(rgb_image):
+    
+# Convert image to HSV color space
+    hsv = cv2.cvtColor(rgb_image, cv2.COLOR_RGB2HSV)
+    
+# Create empty list of feature 
+    feature = []
+    lowrange = np.array([0,0,20
+                        ])
+    highrange = np.array([256,60,205])
+# Mask the image
+    mask = cv2.inRange(hsv,lowrange,highrange)
+    
+    masked_image = np.copy(hsv)
+    
+    masked_image[mask != 0] = [0,0,0]
+    conversion_image = np.copy(masked_image)
+# Convert to RGB
+    rgb = cv2.cvtColor(conversion_image, cv2.COLOR_HSV2RGB)
+    
+    rowcrop = 9
+    colcrop = 6
+    
+    crop = np.copy(rgb)
+    crop = crop[colcrop:-colcrop, rowcrop:-rowcrop,:]
+
+    
+    rgb_average = avg_rgb(crop)
+    feature.append(rgb_average)
+    
+    
+
+
+    return feature
+
 # %%
