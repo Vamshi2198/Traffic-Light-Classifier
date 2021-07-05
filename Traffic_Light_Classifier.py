@@ -157,4 +157,33 @@ def create_feature(rgb_image):
 
     return feature
 
+## This function should take in RGB image input
+# Analyze that image using your feature creation code and output a one-hot encoded label
+def estimate_label(rgb_image):
+    features = create_feature(rgb_image)
+    ## Extract feature(s) from the RGB image and use those features to
+    ## classify the image and output a one-hot encoded label
+    predicted_label = []
+    red = features[0][0]
+    green = features[0][1]
+    blue = features[0][2]
+    
+    if red > green:
+        predicted_label = [1,0,0]
+    
+    elif (red < green) and (blue > 180):
+        predicted_label = [1,0,0]
+        
+    elif red < green:
+        predicted_label = [0,0,1]
+        
+    elif red == green:
+        predicted_label = [0,1,0]
+    
+    else:
+        predicted_label = [0,1,0]
+    
+    
+    return predicted_label   
+    
 # %%
