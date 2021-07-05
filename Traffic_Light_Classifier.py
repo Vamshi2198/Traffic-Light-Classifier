@@ -81,4 +81,34 @@ def standardize(image_list):
 
 # Standardize all training images
 STANDARDIZED_LIST = standardize(IMAGE_LIST)
+
+# Convert and image to HSV colorspace
+# Visualize the individual color channels
+
+image_num = 0
+test_im = STANDARDIZED_LIST[image_num][0]
+test_label = STANDARDIZED_LIST[image_num][1]
+
+# Convert to HSV
+hsv = cv2.cvtColor(test_im, cv2.COLOR_RGB2HSV)
+
+# Print image label
+print('Label [red, yellow, green]: ' + str(test_label))
+
+# HSV channels
+h = hsv[:,:,0]
+s = hsv[:,:,1]
+v = hsv[:,:,2]
+
+# Plot the original image and the three channels
+f, (ax1, ax2, ax3, ax4) = plt.subplots(1, 4, figsize=(20,10))
+ax1.set_title('Standardized image')
+ax1.imshow(test_im)
+ax2.set_title('H channel')
+ax2.imshow(h, cmap='gray')
+ax3.set_title('S channel')
+ax3.imshow(s, cmap='gray')
+ax4.set_title('V channel')
+ax4.imshow(v, cmap='gray')
+
 # %%
