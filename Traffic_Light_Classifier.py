@@ -236,5 +236,15 @@ accuracy = num_correct/total
 print('Accuracy: ' + str(accuracy))
 print("Number of misclassified images = " + str(len(MISCLASSIFIED)) +' out of '+ str(total))
 
+# Importing the tests
+import test_functions
+tests = test_functions.Tests()
+
+if(len(MISCLASSIFIED) > 0):
+    # Test code for one_hot_encode function
+    tests.test_red_as_green(MISCLASSIFIED)
+else:
+    print("MISCLASSIFIED may not have been populated with images.")
+
     
 # %%
