@@ -8,8 +8,6 @@ import numpy as np
 import matplotlib.pyplot as plt
 import matplotlib.image as mpimg # for loading in images
 
-%matplotlib inline
-
 # Image data directories
 IMAGE_DIR_TRAINING = "traffic_light_images/training/"
 IMAGE_DIR_TEST = "traffic_light_images/test/"
@@ -47,3 +45,13 @@ def one_hot_encode(label):
         one_hot_encoded = [0,1,0]
     else:
         one_hot_encoded =[0,0,1]
+    
+    return one_hot_encoded
+
+# Importing the tests
+import test_functions
+tests = test_functions.Tests()
+
+# Test for one_hot_encode function
+tests.test_one_hot(one_hot_encode)
+# %%
