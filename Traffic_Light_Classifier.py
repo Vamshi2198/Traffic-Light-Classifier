@@ -55,4 +55,30 @@ tests = test_functions.Tests()
 
 # Test for one_hot_encode function
 tests.test_one_hot(one_hot_encode)
+
+# Construct a STANDARDIZED_LIST of input images and output labels.
+
+def standardize(image_list):
+    
+    # Empty image data array
+    standard_list = []
+
+    # Iterate through all the image-label pairs
+    for item in image_list:
+        image = item[0]
+        label = item[1]
+
+        # Standardize the image
+        standardized_im = standardize_input(image)
+
+        # One-hot encode the label
+        one_hot_label = one_hot_encode(label)    
+
+        # Append the image, and it's one hot encoded label to the full, processed list of image data 
+        standard_list.append((standardized_im, one_hot_label))
+        
+    return standard_list
+
+# Standardize all training images
+STANDARDIZED_LIST = standardize(IMAGE_LIST)
 # %%
