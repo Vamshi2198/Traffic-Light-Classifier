@@ -111,4 +111,12 @@ ax3.imshow(s, cmap='gray')
 ax4.set_title('V channel')
 ax4.imshow(v, cmap='gray')
 
+# Calculates average red, green ,blue pixels in an image
+def avg_rgb(rgb_image):
+    red_sum = np.sum(rgb_image[:,:,0])
+    green_sum = np.sum(rgb_image[:,:,1])
+    blue_sum = np.sum(rgb_image[:,:,2])
+    total = rgb_image.shape[0] * rgb_image.shape[1]
+    
+    return [red_sum/total,green_sum/total,blue_sum/total]
 # %%
