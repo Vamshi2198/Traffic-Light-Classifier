@@ -1,3 +1,4 @@
+# %%
 # import the libraries and resources
 
 import cv2 # computer vision library
