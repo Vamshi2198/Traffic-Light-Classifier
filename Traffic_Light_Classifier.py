@@ -29,3 +29,21 @@ def standardize_input(image):
     
     return standard_im_resize
     
+## One hot encode an image label
+## Given a label - "red", "green", or "yellow" - return a one-hot encoded label
+
+# Examples: 
+# one_hot_encode("red") should return: [1, 0, 0]
+# one_hot_encode("yellow") should return: [0, 1, 0]
+# one_hot_encode("green") should return: [0, 0, 1]
+
+def one_hot_encode(label):
+    
+    ## Create a one-hot encoded label that works for all classes of traffic lights
+    one_hot_encoded = [] 
+    if (label == "red"):
+        one_hot_encoded = [1,0,0]
+    elif (label == "yellow"):
+        one_hot_encoded = [0,1,0]
+    else:
+        one_hot_encoded =[0,0,1]
