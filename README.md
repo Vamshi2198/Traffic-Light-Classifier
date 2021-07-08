@@ -8,5 +8,5 @@
 * Additionally, you can also work on [Jupyter Notebooks](https://jupyter.readthedocs.io/en/latest/install.html) or [Google Colab](https://colab.research.google.com/notebooks/intro.ipynb).
 
 ## Instructions to run the project
-1. Clone this repository using `git clone https://github.com/Vamshi2198/2D-histogram-filter`.
+1. Clone this repository using `git clone https://github.com/Vamshi2198/Traffic-Light-Classifier`.
 2. Open the repository in vs code and click `run all` at the top.
